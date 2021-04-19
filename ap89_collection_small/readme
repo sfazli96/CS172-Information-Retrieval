@@ -1,0 +1,72 @@
+Informal Notes on the AP Newswire
+
+The material includes copyrighted stories from the AP Newswire, as
+collected by AT & T Bell Laboratories.  The stories are all from 1989.
+
+The data has been changed to standard SGML format, as shown below.
+
+<DOC>
+<DOCNO> AP891231-0001 </DOCNO>
+<FILEID>AP-NR-12-31-89 2359EDT</FILEID>
+<FIRST>r a PM-MonkeyBusiness     12-31 0269</FIRST>
+<SECOND>PM-Monkey Business,0276</SECOND>
+<HEAD>Yacht That Took Gary Hart On Famous Cruise Suffered From Fame</HEAD>
+<DATELINE>DENVER (AP) </DATELINE>
+<TEXT>
+   Monkey Business, the yacht that helped sink Gary
+Hart's presidential aspirations in 1988, is for sale, and its
+captain says notoriety from Hart's trip to Bimini with Donna Rice
+hurt business.
+   The charter boat, which is docked at Turberry Marina in Miami,
+is on sale for $1.5 million, Capt. Butch Vogelsang said in a report
+published Sunday in The Denver Post.
+   The 83-foot yacht briefly became a household name in 1987, when
+Miami model Donna Rice was photographed sitting on Democratic
+presidential candidate Hart's lap during a cruise to Bimini.
+   The photograph surfaced after published reports that Hart and
+Rice spent a night together at the candidate's Washington, D.C.,
+townhouse. The revelations forced Hart to withdraw from the
+presidential race.
+   Vogelsang said he remembers the trip to Bimini with Hart and
+Rice.
+   ``I'll tell you what happened. Nothing,'' he said. ``Hart didn't
+do anything with the girls. A captain knows what goes on on the
+ship. I can tell you this. The beds weren't touching. If anything,
+Hart acted so naive. He just kind of stood around. He wasn't a
+boatsman.''
+   But the stories about that famous cruise nearly ruined the
+Monkey Business, Vogelsang said.
+   ``We were dead after the publicity,'' he said. ``We mostly
+charter out for a week at a time, and anybody who spends $25,000
+doesn't want people staring and saying, `Oh, there goes the Monkey
+Business. Where's Gary?' They want privacy.''
+   Since then, business has steadily improved, he said. ``We're
+doing about 40 charters a year now.''
+</TEXT>
+</DOC>
+
+Each document contains the DOC and DOCNO fields.  Other fields include:
+FILEID, NOTE, UNK, FIRST, SECOND, HEAD, DATELINE, TEXT and BYLINE.  
+The FIRST, SECOND, and HEAD fields may contain headline-type information, or may
+contain notes to the editor, notices of upcoming stories, etc.  These
+fields also contain lots of "noisy" characters.  The FILEID field contains
+a timestamp for the story, but may not be unique.  The DATELINE field contains
+the source location of the story.  A BYLINE field containing information
+about the writer may also be present.  Often fields may be missing or may 
+contain only "noise".  Additionally the TEXT fields may be blank for
+stories that are notices of upcoming events, etc.  The AP data is very noisy,
+containing fragment sentences, spliced sentences, pseudo-duplicate stories,
+and other such items as might be expected when pulling material off newswires.
+Much of these has been cleaned up by the AT & T programs, but much remains.
+
+The "<" and ">" signs have been changed "less than" and "greater than".  The
+files also contain the following SGML entities:  
+
+		amp    (for the "&" sign); 
+		lsqb   (for the "[" sign); 
+		rsqb   (for the "]" sign); 
+		plus   (for the "+" sign);
+		equals (for the "=" sign). 
+
+
+
