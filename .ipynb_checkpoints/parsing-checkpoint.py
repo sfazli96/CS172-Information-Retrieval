@@ -41,11 +41,6 @@ docno_dic = {}
 termIndex = {}
 docIndex = {}
 
-# inverted indices to map the ids
-# tokenization process is as a conversion from a document to a sequence of (term_id, doc_id, position) 
-# tuples which need to be stored in your inverted index.
-termIndex = {}
-docIndex = {}
 
 with zipfile.ZipFile("ap89_collection_small.zip", 'r') as zip_ref:
     zip_ref.extractall()
