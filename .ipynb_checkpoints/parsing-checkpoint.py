@@ -41,6 +41,12 @@ docno_dic = {}
 termIndex = {}
 docIndex = {}
 
+# inverted indices to map the ids
+# tokenization process is as a conversion from a document to a sequence of (term_id, doc_id, position) 
+# tuples which need to be stored in your inverted index.
+termIndex = {}
+docIndex = {}
+
 with zipfile.ZipFile("ap89_collection_small.zip", 'r') as zip_ref:
     zip_ref.extractall()
 
@@ -65,7 +71,10 @@ for file in allfiles:
         filedata = f.read()
         result = re.findall(doc_regex, filedata)  # Match the <DOC> tags and fetch documents
 
-         #for every document-- get the doc# and the doc#'s text
+
+        docID = 1
+        #for every document-- get the doc# and the doc#'s text
+
         print("There are  "+str(len(result))+" documents in this document")
         for document in result[0:1]:
             
@@ -140,4 +149,3 @@ print(sorted(word_dic))
             
             # step 2 - create tokens 
             # step 3 - build index
-            
