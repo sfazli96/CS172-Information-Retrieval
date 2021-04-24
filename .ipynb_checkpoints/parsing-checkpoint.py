@@ -6,22 +6,6 @@ import string
 from nltk.stem import PorterStemmer
 from nltk.tokenize import word_tokenize
 
-class term_attributes:
-  
-  def __init__(self, doc_id , list_of_pos, frequency):
-    self.doc_id = doc_id
-    self.list_of_pos = list_of_pos
-    self.frequency = frequency
-
-  def get_id(self):
-      return self.doc_id
- 
-  def get_list_of_pos(self):
-      return self.list_of_pos
-  
-  def get_frequency(self):
-      return self.frequency
-
 # Regular expressions to extract data from the corpus
 doc_regex = re.compile("<DOC>.*?</DOC>", re.DOTALL)
 docno_regex = re.compile("<DOCNO>.*?</DOCNO>")
@@ -40,7 +24,6 @@ docno_dic = {}
 # tuples which need to be stored in your inverted index.
 termIndex = {}
 docIndex = {}
-
 
 with zipfile.ZipFile("ap89_collection_small.zip", 'r') as zip_ref:
     zip_ref.extractall()
@@ -66,10 +49,7 @@ for file in allfiles:
         filedata = f.read()
         result = re.findall(doc_regex, filedata)  # Match the <DOC> tags and fetch documents
 
-
-        docID = 1
-        #for every document-- get the doc# and the doc#'s text
-
+         #for every document-- get the doc# and the doc#'s text
         print("There are  "+str(len(result))+" documents in this document")
         for document in result[0:1]:
             
@@ -92,7 +72,7 @@ for file in allfiles:
             ps = PorterStemmer()
             for w in words:
                 print(w, " : ", ps.stem(w))
-                
+
             # but first lets define how many times a word occurs and at what position
             for i, word in enumerate(words,start=1):
                 if word in local_dic:
@@ -103,15 +83,11 @@ for file in allfiles:
                 else:
                     local_dic[word] = [[i],1]
 
-
             total_terms = 0
-            
             for term in local_dic:
-                # print(term, '->', local_dic[term])
                 mytuple = (docno,local_dic[term])
                 frequency_of_term = len(local_dic[term][0])
                 total_terms = total_terms + frequency_of_term
-                # print(mytuple)
 
                 if term not in word_dic:
                     if term not in stopwords_set:
@@ -125,22 +101,26 @@ for file in allfiles:
             print("Doc#: "+docno+" total terms: "+str(total_terms)+" unique terms: "+ str(len(local_dic))) 
             print("Length of word dic at the end = "+str(len(word_dic)))
 
-            for t in word_dic:
-                print(t,'->',word_dic[t])
 
-
-            exit(0) #testing on one document for now
-            #we can remove the exit after we are positive our implementation works
-                    
-
+            #exit(0) #testing on one document for now                    
             
-    x = x +1 #increment what file we are on
-    print("size of dic = "+str(len(word_dic)))
+    x = x + 1 #increment what file we are on
 
+for term in word_dic:
+    total_qty = 0
+    for tup in word_dic[term]:
+        total_qty = total_qty + tup[1][1]
+    word_dic[term].append(total_qty)
+    # print(term+'->'+str(word_dic[term]))
 
-print(sorted(word_dic))
+    
+try:
+    text_file = open('text_file.txt', 'wt')
+    text_file.write(str(word_dic))
+    text_file.close()
 
-
-            
-            # step 2 - create tokens 
-            # step 3 - build index
+    text_file_doc = open('doc_file.txt','wt')
+    text_file_doc.write(str(docno_dic))
+    text_file_doc.close()
+except:
+    print("Unable to write to file")
