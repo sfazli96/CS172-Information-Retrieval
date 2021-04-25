@@ -96,10 +96,10 @@ for file in allfiles:
                     word_dic[term].append(mytuple)
             
                 
-            print("Text: "+text)
+            # print("Text: "+text)
             docno_dic[docno] = (total_terms,len(local_dic))
-            print("Doc#: "+docno+" total terms: "+str(total_terms)+" unique terms: "+ str(len(local_dic))) 
-            print("Length of word dic at the end = "+str(len(word_dic)))
+            # print("Doc#: "+docno+" total terms: "+str(total_terms)+" unique terms: "+ str(len(local_dic))) 
+            # print("Length of word dic at the end = "+str(len(word_dic)))
 
 
             #exit(0) #testing on one document for now                    
@@ -116,7 +116,9 @@ for term in word_dic:
     
 try:
     text_file = open('text_file.txt', 'wt')
-    text_file.write(str(word_dic))
+    # text_file.write(str(word_dic))
+    for key in word_dic:
+        text_file.write(str(key)+":"+str(word_dic[key])+"\n")
     text_file.close()
 
     text_file_doc = open('doc_file.txt','wt')
