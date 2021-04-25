@@ -17,13 +17,16 @@ def get_doc_info(file_name):
     docno_dictionary = ast.literal_eval(contents)
     filer.close()
 
-
 def get_content(file_name):
     global term_dictionary
     # filer = open(file_name, "r")
     with open(file_name, 'r') as f:
         for line in f:
-            print(line) 
+            print(line)
+            key, value = line.strip().split(",")
+            term_dictionary[key] = value 
+    print(term_dictionary)
+            
 
 def getInput(arguments):
     if len(arguments) <= 1 :
@@ -42,8 +45,8 @@ def getInput(arguments):
         doc_attr = get_doc_attributes(query)
         if len(doc_attr) != 0:
             display_doc_attr(query, doc_attr)
-    else:
-        print("Error in Input")
+        else:
+            print("Error in Input")
 
 def display_doc_attr(query, doc_attr):
     print("Listing for document:"+str(query))
@@ -68,12 +71,12 @@ def main():
     
     print("in here..")
     get_content("text_file.txt")
-    # print("loaded terms...")
-    # get_doc_info("doc_file.txt")
-    # print("loaded docs...")
-    # print('Number of arguments:', len(sys.argv), 'arguments.')
-    # print('Argument List:', str(sys.argv))
-    # getInput(sys.argv)
+    print("loaded terms...")
+    get_doc_info("doc_file.txt")
+    print("loaded docs...")
+    print('Number of arguments:', len(sys.argv), 'arguments.')
+    print('Argument List:', str(sys.argv))
+    getInput(sys.argv)
     
 if __name__ == "__main__":
     main()
